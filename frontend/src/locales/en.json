@@ -1,0 +1,27 @@
+{
+  "aside": {
+    "co2": "CO2 Factors"
+  },
+  "footer": {
+    "main-text": "Footprints emission ©2020 Created by Max Kaliber"
+  },
+  "views": {
+    "calculator-co2": {
+      "tabs": {
+        "general": "General",
+        "home": "Home",
+        "transport": "Transport"
+      },
+      "forms": {
+        "submit-btn": "Calculate"
+      }
+    }
+  },
+  "components": {
+    "forms": {
+      "labels": {
+        "count-people": "Number of people ({{countPeople}})"
+      }
+    }
+  }
+}

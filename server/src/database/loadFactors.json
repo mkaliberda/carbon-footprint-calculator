@@ -1,0 +1,48 @@
+[{
+    "slug": "electricity",
+    "label": "Electricity",
+    "category": "home",
+    "value": 0.7,
+    "of": "kg",
+    "unit": "kwh",
+    "period": "y",
+    "periods": ["y", "m", "w"],
+    "units": ["kwh"],
+    "emission": "co2"
+},
+{
+    "slug": "natural-gas",
+    "label": "Natural Gas",
+    "category": "home",
+    "value": 6.6,
+    "of": "kg",
+    "unit": "therm",
+    "period": "y",
+    "periods": ["y", "m", "w"],
+    "units": ["therm"],
+    "emission": "co2"
+},
+{
+    "slug": "lpg",
+    "label": "LPG",
+    "category": "home",
+    "value": 6.8,
+    "of": "kg",
+    "unit": "gallon",
+    "period": "y",
+    "periods": ["y", "m", "w"],
+    "units": ["gallon"],
+    "emission": "co2"
+},
+{
+    "slug": "fuel-oil",
+    "label": "Fuel Oil",
+    "category": "home",
+    "value": 6.6,
+    "of": "kg",
+    "unit": "gallon",
+    "period": "y",
+    "periods": ["y", "m", "w"],
+    "units": ["gallon"]
+}
+]
