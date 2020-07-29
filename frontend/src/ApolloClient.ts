@@ -2,7 +2,7 @@ import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client';
 import { withClientState } from 'apollo-link-state';
 import { onError } from 'apollo-link-error';
 import { setContext } from 'apollo-link-context';
-import { HttpLink } from "apollo-link-http";
+import { HttpLink } from 'apollo-link-http';
 
 import defaults from './graphql/defaults';
 import resolvers from './graphql/resolvers';
@@ -24,18 +24,19 @@ const headerLink: any = setContext((_, { headers }) => ({
   headers: {
     ...headers,
     'X-Requested-With': 'XMLHttpRequest',
-  }
+  },
 }));
 
 const errorLink = onError(({graphQLErrors, networkError }) => {
-  if (graphQLErrors)
+  if (graphQLErrors) {
     graphQLErrors.forEach(({ message, locations, path }) =>
       console.log(
           `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
       )
     );
+  }
   if (networkError) {
-    console.log(networkError)
+    console.log(networkError);
   }
 });
 

@@ -3,11 +3,11 @@ import { useLazyQuery } from '@apollo/client';
 import queries from '../../graphql/queries';
 import { Form, Button, Spin } from 'antd';
 
-import InputWith2Select from '../../components/Inputs/InputWith2Select'
+import InputWith2Select from '../../components/Inputs/InputWith2Select';
 
-const CalculatorForm = (props:any) => {
-  const [getFactors, { data, loading }] = useLazyQuery(queries.GET_FACTORS_PARAMS,
-    { variables: { category: props.category, emission: props.category }});
+const CalculatorForm = (props: any) => {
+  // @ts-ignore
+  const [getFactors, { data, loading }] = useLazyQuery(queries.GET_FACTORS_PARAMS, { variables: { category: props.category, emission: props.category }});
   const [ paramsData, setParamsData ] = useState({});
 
   useEffect(() => {
@@ -16,19 +16,19 @@ const CalculatorForm = (props:any) => {
           await getFactors();
           props.setFactorsParams(data);
         }
-      }
+      };
       asyncUpdateFactors();
   }, [props, getFactors, data]);
 
-  const handlerParams = (params:any) => {
-    let updatedParamsData: any = { ...paramsData };
+  const handlerParams = (params: any) => {
+    const updatedParamsData: any = { ...paramsData };
     updatedParamsData[params.name] = {
       value: params.value,
       unit: params.selectFirst,
       period: params.selectSecond,
-    }
+    };
     setParamsData(updatedParamsData);
-  }
+  };
 
   const handleSubmit = () => {
     const factorsValues = Object.keys(paramsData).map(key => ({
@@ -38,13 +38,14 @@ const CalculatorForm = (props:any) => {
         period: Object(paramsData)[key].period,
     }));
     props.onSubmit(factorsValues);
-  }
+  };
 
-  if (loading) return (
+  if (loading) { return (
     <div className='spin-body'>
       <Spin/>
     </div>
   );
+  }
 
   return (
     <div>
@@ -52,7 +53,7 @@ const CalculatorForm = (props:any) => {
         layout={'vertical'}
       >
         { props.factorsParams ?
-          props.factorsParams.getFactorsParams.map((el:any, index:number) => {
+          props.factorsParams.getFactorsParams.map((el: any, index: number) => {
             return(
               <Form.Item
                 key={`input_form${el.name}`}
@@ -71,15 +72,15 @@ const CalculatorForm = (props:any) => {
                   handlerParams={handlerParams}
                 />
               </Form.Item>
-            )
+            );
           })
           : null }
-          <Button type="primary" onClick={handleSubmit}>
+          <Button type='primary' onClick={handleSubmit}>
             Calculate
           </Button>
       </Form>
     </div>
-  )
-}
+  );
+};
 
-export default CalculatorForm
+export default CalculatorForm;

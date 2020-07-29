@@ -1,7 +1,7 @@
 import React from 'react';
 import {Bar} from 'react-chartjs-2';
 
-const StatisticWrapper = (props:any) => {
+const StatisticWrapper = (props: any) => {
   const data = {
     labels: Object.keys(props.totalData).map(el => props.totalData[el].label),
     datasets: [
@@ -13,18 +13,18 @@ const StatisticWrapper = (props:any) => {
         hoverBackgroundColor: 'rgba(255,99,132,0.4)',
         hoverBorderColor: 'rgba(255,99,132,1)',
         data: Object.keys(props.totalData).map(el => props.totalData[el].emission),
-      }
-    ]
+      },
+    ],
   };
 
   return (
     <>
-    <div className="statics-count-wrapper">
-      <div className="statics-count">
+    <div className='statics-count-wrapper'>
+      <div className='statics-count'>
         <h2> { props.countPeople } </h2>
         <h4>People</h4>
       </div>
-      <div className="statics-count">
+      <div className='statics-count'>
         <h2> { props.total() } </h2>
         <h4>kgCO2/year</h4>
       </div>
@@ -34,12 +34,12 @@ const StatisticWrapper = (props:any) => {
         data={data}
         height={250}
         options={{
-          maintainAspectRatio: false
+          maintainAspectRatio: false,
         }}
       />
     </div>
     </>
-  )
-}
+  );
+};
 
 export default StatisticWrapper;

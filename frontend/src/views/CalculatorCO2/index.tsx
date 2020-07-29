@@ -9,10 +9,9 @@ import { useMutation } from '@apollo/client';
 import GeneralForm from './GeneralForm';
 import CalculatorForm from './CalculatorForm';
 
-
 import CalculatorTabs from './components/CalculatorTabs';
 import StatisticWrapper from './components/StatisticWrapper';
-import mutation from "../../graphql/mutations";
+import mutation from '../../graphql/mutations';
 
 const CalculatorCO2 = () => {
   const currentLocation = useLocation();
@@ -26,42 +25,49 @@ const CalculatorCO2 = () => {
   const [calculateEmissions, homeData] = useMutation(mutation.CALCULATE_EMISSIONS);
 
   useEffect(() => {
-      const updatedTotalData =  { ...totalData }
+    console.log(currentLocation.pathname, currentLocation.pathname === ROUTERS.CALCULATOR_CO2.path);
+    if (currentLocation.pathname === ROUTERS.CALCULATOR_CO2.name) {
+      history.push(ROUTERS.CALCULATOR_CO2.child.GENERAL.path);
+    }
+  }, [currentLocation, history]);
+
+  useEffect(() => {
+      const updatedTotalData =  { ...totalData };
       if (homeData.data) {
         homeData.data.calculateEmissions.forEach((el: any) => {
           Object(updatedTotalData)[el.name] = {
             emission: el.emission,
             label: el.label,
             unit: el.nice,
-          }
-        })
+          };
+        });
         setTotalData(updatedTotalData);
       }
-  }, [homeData.data])
+  }, [homeData.data]);
 
-  const changeLocation = (newPath:string) => {
+  const changeLocation = (newPath: string) => {
     history.push(newPath);
-  }
+  };
 
   const getTotal = () => {
-    console.log('getTotal')
+    console.log('getTotal');
     let total = 0;
     Object.keys(totalData).forEach((key) => {
       total += Object(totalData)[key].emission;
-    })
+    });
     return total;
-  }
+  };
 
-  const handleSubmit = async (factorsValues:any) => {
+  const handleSubmit = async (factorsValues: any) => {
     try {
-      await calculateEmissions({variables: {peoples: countPeople, category: 'home', emission: 'co2', factorsValues}})
+      await calculateEmissions({variables: {peoples: countPeople, category: 'home', emission: 'co2', factorsValues}});
     } catch (e) {
       console.log(e);
     }
     if (!homeData.loading) {
       console.log('data', homeData.data);
     }
-  }
+  };
 
   return (
     <>
@@ -72,7 +78,7 @@ const CalculatorCO2 = () => {
           ROUTERS={ROUTERS}
         />
         <Row>
-          <Col span={12} className="p-2">
+          <Col span={12} className='p-2'>
             <Switch>
               <Route
                 exact
@@ -102,7 +108,7 @@ const CalculatorCO2 = () => {
               </Route>
             </Switch>
           </Col>
-        <Col span={12}  className="p-2">
+        <Col span={12}  className='p-2'>
           <StatisticWrapper
             countPeople={countPeople}
             total={getTotal}
@@ -112,7 +118,7 @@ const CalculatorCO2 = () => {
         </Row>
       </Card>
     </>
-  )
-}
+  );
+};
 
 export default CalculatorCO2;

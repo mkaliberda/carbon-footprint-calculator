@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Slider } from 'antd';
 
-import {useTranslation} from "react-i18next";
+import {useTranslation} from 'react-i18next';
 
-const GeneralForm = (props:any) => {
+const GeneralForm = (props: any) => {
   const { t } = useTranslation();
 
   const layout = {
@@ -11,9 +11,9 @@ const GeneralForm = (props:any) => {
     wrapperCol: { span: 20 },
   };
 
-  const onChange = (value:number) => {
+  const onChange = (value: number) => {
     props.setCountPeople(value);
-  }
+  };
 
   return (
     <>
@@ -30,7 +30,7 @@ const GeneralForm = (props:any) => {
         </Form.Item>
       </Form>
     </>
-  )
-}
+  );
+};
 
 export default GeneralForm;

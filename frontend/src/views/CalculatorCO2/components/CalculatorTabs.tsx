@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 import { Tabs } from 'antd';
-import {useTranslation} from "react-i18next";
+import {useTranslation} from 'react-i18next';
 
 const { TabPane } = Tabs;
 
-const CalculatorTabs = (props:any) => {
+const CalculatorTabs = (props: any) => {
   const { t } = useTranslation();
 
   return (
@@ -33,7 +33,7 @@ const CalculatorTabs = (props:any) => {
       >
       </TabPane>
     </Tabs>
-  )
-}
+  );
+};
 
 export default CalculatorTabs;

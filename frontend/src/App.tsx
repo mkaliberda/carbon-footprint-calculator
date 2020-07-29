@@ -3,10 +3,10 @@ import { Switch, Route, Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import { CloudOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
-import logo from './assets/logo.png'
+import logo from './assets/logo.png';
 
-import { ROUTERS } from './constants'
-import CalculatorCO2 from './views/CalculatorCO2'
+import { ROUTERS } from './constants';
+import CalculatorCO2 from './views/CalculatorCO2';
 
 import './App.less';
 
